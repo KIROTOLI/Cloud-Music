@@ -1,20 +1,64 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
+import home from '../views/Home.vue'
+import login from '@/components/login/login.vue'
+import logining from '@/components/login/logining.vue'
+import resgin from '@/components/resgin/resgin.vue'
+import loginIn from '@/components/login/loginIn.vue'
+import descover from '../views/descover.vue'
+import mine from '../views/mine.vue'
+import movie from '../views/movie.vue'
+import yuncun from '../views/yuncun.vue'
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path:'',
+    redirect:'/login'
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/login',
+    name: 'login',
+    component: login
+  },
+  {
+    path:'/logining',
+    name:'logining',
+    component:logining
+  },
+  {
+    path:'/resgin',
+    name:'resgin',
+    component:resgin
+  },
+  {
+    path:'/loginIn',
+    name:'loginIn',
+    component:loginIn
+  },
+  {
+    path:'/home',
+    name:'home',
+    component:home,
+    redirect:'descover',
+    children:[
+      {
+        path:'/descover',
+        component:descover
+      },
+      {
+        path:'/mine',
+        component:mine
+      },
+      {
+        path:'/movie',
+        component:movie
+      },
+      {
+        path:'/yuncun',
+        component:yuncun
+      }
+    ]
   }
+ 
 ]
 
 const router = createRouter({
